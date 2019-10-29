@@ -1,0 +1,56 @@
+<div style="margin: 5px">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Your Payment Data</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Card Number</mat-label>
+          <input matInput
+                 placeholder="0000000000000000"
+                 [(ngModel)]="payment.cardNumber"
+                 required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Card Holder</mat-label>
+          <input matInput
+                 placeholder="JOHN SMITH"
+                 [(ngModel)]="payment.cardHolder"
+                 required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline" style="margin-right: 5px">
+          <mat-select placeholder="Expires Month"
+                      [(value)]="payment.expiryMonth"
+                      required>
+            <mat-option *ngFor="let expiryMonth of ExpiryMonths" [value]="expiryMonth">
+              {{expiryMonth}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="margin-left: 5px">
+          <mat-select placeholder="Expires Year"
+                      [(value)]="payment.expiryYear"
+                      required>
+            <mat-option *ngFor="let expiryYear of ExpiryYears" [value]="expiryYear">
+              {{expiryYear}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>CVC</mat-label>
+          <input matInput
+                 placeholder="999"
+                 [(ngModel)]="payment.cvc"
+                 required>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

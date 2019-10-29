@@ -1,0 +1,11 @@
+<mat-toolbar class="header" color="primary">
+  <p>Subscribe to sign up</p>
+</mat-toolbar>
+<app-cart [cart]="cart"></app-cart>
+<app-customer [customer]="customer"></app-customer>
+<app-payment [payment]="payment"></app-payment>
+<mat-toolbar>
+  <button mat-raised-button color="primary" style="width: 100%"
+          (click)="onSubmit()"
+          [disabled]="isDisableSubmit()">Submit</button>
+</mat-toolbar>
