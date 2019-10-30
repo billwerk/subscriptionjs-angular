@@ -1,4 +1,7 @@
 export const environment = {
   production: true,
-  publicApiKey: ''
+  publicApiKey: '',
+  clientId: '',
+  clientSecret: '',
+  billwerkHost: 'billwerk.com'
 };
