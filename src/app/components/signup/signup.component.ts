@@ -27,10 +27,7 @@ export class SignupComponent implements OnInit {
     this.signupService.init(providerReturnUrl)
       .subscribe(
         () => console.log(`PSP initialization completed.`),
-        error => {
-          console.log(error);
-          alert(`Error! PSP initialization failed. [${error}]`);
-        }
+        error => alert(`Error! PSP initialization failed. [${error}]`)
       );
   }
 
@@ -45,20 +42,14 @@ export class SignupComponent implements OnInit {
   }
 
   private subscribe() {
-    console.log(this.cart);
-    console.log(this.customer);
-    console.log(this.payment);
+    console.log(`Cart: `, this.cart);
+    console.log(`Customer: `, this.customer);
+    console.log(`Payment: `, this.payment);
 
     this.signupService.subscribe(this.cart, this.customer, this.payment)
       .subscribe(
-        result => {
-          console.log(result);
-          this.router.navigate(['/portal']).then(() => alert(`You was subscribed successful!`));
-        },
-        error => {
-          console.log(error);
-          alert(`Error! Interactive signup failed. [${error}]`);
-        }
+        () => this.router.navigate(['/portal']).then(() => alert(`You was subscribed successful!`)),
+        error => alert(`Error! Interactive signup failed. [${error}]`)
       );
 
     this.router.navigate(['/loader']).then(() => console.log('loader'));

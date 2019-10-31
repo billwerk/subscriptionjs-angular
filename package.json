@@ -1,9 +1,10 @@
 {
-  "name": "billwerkjs-angular",
+  "name": "signup-angular",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "sandbox": "ng serve --configuration=sandbox",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

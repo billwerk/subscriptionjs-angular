@@ -1,37 +1,34 @@
-# SubscriptionJS Angular
+# Signup Example Application (Angular)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.12.
+This project is an example of Signup application in Angular
+ with using [SubscriptionJS](https://developer.billwerk.io/Docs/subscriptionJS_Introduction)
+ and [REST API](https://developer.billwerk.io/Docs/ApiIntroduction)
+ through [billwerk npm package](https://www.npmjs.com/package/billwerk)
 
-## Get started
+## <font color="red">IMPORTANT!</font> Before you launch the application
+- Clone repo `git clone git@github.com:billwerk/subscriptionjs-angular.git` 
+- Run `npm install`
+- Replace `line 31` in `node_modules\billwerk\dist\index.js` with following code:
+```javascript
+    return `http://${this.billwerkHost}${!short ? this.apiPath : ''}`;
+```
 
-1. Clone repo `git clone git@github.com:billwerk/subscriptionjs-angular.git`
-2. Run `npm install`
-3. Tweak environments to your liking **TODO**
-   * Planvariants
-   * publicApiKey
-   * ...
-4. Run `ng serve -c sandbox` to use the sandbox environment
+## Launch application with Sandbox server
+- Login to your account on [Sandbox](https://sandbox.billwerk.com) server
+- Make sure that your account has any active Plan Variants ([Products](https://sandbox.billwerk.com/#/products))
+- Make sure that your account has active `CreditCard:Ayden` paument method ([Settings/Payment Settings](https://sandbox.billwerk.com/#/settings/payment-providers-list))
+- Populate your settings in `src\environment\sandbox\environment.ts`:
+    - `publicApiKey` - please visit [Settings/Self-Service](https://sandbox.billwerk.com/#/settings/self-service) and copy your `Public API Key` on `General` tab
+    - `clientId` and `clientSecret` - please visit [Settings/My Apps](https://sandbox.billwerk.com/#/settings/oauth-clients), create new `Confidential` client and copy `Id` and `Secret`
+- Run `npm run sandbox` or `ng serve --c=sandbox` for a sandbox server
+- Navigate to http://localhost:4200/
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Launch application with Local server
+- Login to your account on [Local](http://localhost) server
+- Make sure that your account has any active Plan Variants ([Products](http://localhost/#/products))
+- Make sure that your account has active `CreditCard:Ayden` paument method ([Settings/Payment Settings](http://localhost/#/settings/payment-providers-list))
+- Populate your settings in `src\environment\environment.ts`:
+    - `publicApiKey` - please visit [Settings/Self-Service](http://localhost/#/settings/self-service) and copy your `Public API Key` on `General` tab
+    - `clientId` and `clientSecret` - please visit [Settings/My Apps](http://localhost/#/settings/oauth-clients), create new `Confidential` client and copy `Id` and `Secret`
+- Run `npm run sandbox` or `ng serve --c=sandbox` for a sandbox server
+- Navigate to http://localhost:4200/

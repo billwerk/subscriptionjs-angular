@@ -9,7 +9,7 @@
                     [(value)]="cart.planVariantId"
                     required>
           <mat-option *ngFor="let planVariant of PlanVariants" [value]="planVariant.id">
-            {{planVariant.name}}
+            {{planVariant.description}}
           </mat-option>
         </mat-select>
       </mat-form-field>
