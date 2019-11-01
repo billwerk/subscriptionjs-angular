@@ -16,7 +16,7 @@ This project is an example of Signup application in Angular
 ## Launch application with Sandbox server
 - Login to your account on [Sandbox](https://sandbox.billwerk.com) server
 - Make sure that your account has any active Plan Variants ([Products](https://sandbox.billwerk.com/#/products))
-- Make sure that your account has active `CreditCard:Ayden` paument method ([Settings/Payment Settings](https://sandbox.billwerk.com/#/settings/payment-providers-list))
+- Make sure that your account has active `CreditCard:Ayden` payment method ([Settings/Payment Settings](https://sandbox.billwerk.com/#/settings/payment-providers-list))
 - Populate your settings in `src\environment\sandbox\environment.ts`:
     - `publicApiKey` - please visit [Settings/Self-Service](https://sandbox.billwerk.com/#/settings/self-service) and copy your `Public API Key` on `General` tab
     - `clientId` and `clientSecret` - please visit [Settings/My Apps](https://sandbox.billwerk.com/#/settings/oauth-clients), create new `Confidential` client and copy `Id` and `Secret`
@@ -26,7 +26,7 @@ This project is an example of Signup application in Angular
 ## Launch application with Local server
 - Login to your account on [Local](http://localhost) server
 - Make sure that your account has any active Plan Variants ([Products](http://localhost/#/products))
-- Make sure that your account has active `CreditCard:Ayden` paument method ([Settings/Payment Settings](http://localhost/#/settings/payment-providers-list))
+- Make sure that your account has active `CreditCard:Ayden` payment method ([Settings/Payment Settings](http://localhost/#/settings/payment-providers-list))
 - Populate your settings in `src\environment\environment.ts`:
     - `publicApiKey` - please visit [Settings/Self-Service](http://localhost/#/settings/self-service) and copy your `Public API Key` on `General` tab
     - `clientId` and `clientSecret` - please visit [Settings/My Apps](http://localhost/#/settings/oauth-clients), create new `Confidential` client and copy `Id` and `Secret`
