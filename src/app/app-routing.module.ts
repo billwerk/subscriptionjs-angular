@@ -22,15 +22,15 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    component: SignupComponent,
+    component: SignupComponent
   },
   {
     path: 'portal',
-    component: PortalComponent,
+    component: PortalComponent
   },
   {
     path: '**',
-    redirectTo: 'page-not-found',
+    redirectTo: 'page-not-found'
   }
 ];
 
