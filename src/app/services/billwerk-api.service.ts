@@ -9,7 +9,7 @@ import BillwerkAPI from 'billwerk/dist';
 })
 export class BillwerkApiService {
 
-  apiService = new BillwerkAPI(environment.clientId, environment.clientSecret, window.location.host, '/api/v1');
+  apiService = new BillwerkAPI(environment.clientId, environment.clientSecret, window.location.host, '/api/v1', false);
 
   constructor() {
   }
