@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 import {Payment} from '../../../models/payment';
+import {PaymentService} from '../../../services/payment.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -18,10 +20,20 @@ export class PaymentComponent implements OnInit {
     '2030'
   ];
 
-  constructor() {
+  constructor(private router: Router,
+              private paymentService: PaymentService) {
   }
 
   ngOnInit() {
+    const providerReturnUrl = this.router.serializeUrl(this.router.parseUrl('/signup'));
+    this.paymentService.init(providerReturnUrl)
+      .subscribe(
+        () => {
+          console.log(`PSP initialization completed.`);
+          console.log(this.paymentService.paymentMethods);
+        },
+        error => alert(`Error! PSP initialization failed. [${error}]`)
+      );
   }
 
 }
