@@ -1,56 +1,75 @@
 <div style="margin: 5px">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Your Payment Data <span style="font-weight: bold; color: #E91E63">[CreditCard:Adyen]</span></mat-card-title>
+      <mat-card-title>Your Payment Data
+      </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div>
-        <mat-form-field appearance="outline" style="width: 100%">
-          <mat-label>Card Number</mat-label>
-          <input matInput
-                 placeholder="0000000000000000"
-                 [(ngModel)]="payment.cardNumber"
-                 required>
-        </mat-form-field>
+      <mat-form-field>
+        <mat-label>Select an option</mat-label>
+        <mat-select [(ngModel)]="payment.bearer">
+          <mat-option value=null>None</mat-option>
+          <mat-option value="CreditCard:FakePSP">CreditCard (FakePSP)</mat-option>
+          <mat-option value="Debit:FakePSP">DirectDebit (FakePSP)</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div id="CreditCard" *ngIf="payment.bearer === 'CreditCard:FakePSP'">
+        <div>
+          <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>Card Number</mat-label>
+            <input matInput placeholder="0000000000000000" [(ngModel)]="payment.cardNumber" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>Card Holder</mat-label>
+            <input matInput placeholder="JOHN SMITH" [(ngModel)]="payment.cardHolder" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline" style="margin-right: 5px">
+            <mat-select placeholder="Expires Month" [(value)]="payment.expiryMonth" required>
+              <mat-option *ngFor="let expiryMonth of ExpiryMonths" [value]="expiryMonth">
+                {{expiryMonth}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" style="margin-left: 5px">
+            <mat-select placeholder="Expires Year" [(value)]="payment.expiryYear" required>
+              <mat-option *ngFor="let expiryYear of ExpiryYears" [value]="expiryYear">
+                {{expiryYear}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>CVC</mat-label>
+            <input matInput placeholder="999" [(ngModel)]="payment.cvc" required>
+          </mat-form-field>
+        </div>
       </div>
-      <div>
-        <mat-form-field appearance="outline" style="width: 100%">
-          <mat-label>Card Holder</mat-label>
-          <input matInput
-                 placeholder="JOHN SMITH"
-                 [(ngModel)]="payment.cardHolder"
-                 required>
-        </mat-form-field>
+      <div id="DirectDebit" *ngIf="payment.bearer === 'Debit:FakePSP'">
+        <div>
+          <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>Account Holder</mat-label>
+            <input matInput placeholder="JOHN SMITH" maxlength="128" [(ngModel)]="payment.accountHolder" required>
+          </mat-form-field>
+        </div>        
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>IBAN</mat-label>
+            <input matInput placeholder="DE18360100439999999999" maxlength="34" [(ngModel)]="payment.iban" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>BIC</mat-label>
+            <input matInput placeholder="PBNKDEFF" maxlength="11" [(ngModel)]="payment.bic" required>
+          </mat-form-field>
+        </div>
       </div>
-      <div>
-        <mat-form-field appearance="outline" style="margin-right: 5px">
-          <mat-select placeholder="Expires Month"
-                      [(value)]="payment.expiryMonth"
-                      required>
-            <mat-option *ngFor="let expiryMonth of ExpiryMonths" [value]="expiryMonth">
-              {{expiryMonth}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline" style="margin-left: 5px">
-          <mat-select placeholder="Expires Year"
-                      [(value)]="payment.expiryYear"
-                      required>
-            <mat-option *ngFor="let expiryYear of ExpiryYears" [value]="expiryYear">
-              {{expiryYear}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field appearance="outline">
-          <mat-label>CVC</mat-label>
-          <input matInput
-                 placeholder="999"
-                 [(ngModel)]="payment.cvc"
-                 required>
-        </mat-form-field>
-      </div>
+
     </mat-card-content>
   </mat-card>
 </div>

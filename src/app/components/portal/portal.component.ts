@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-portal',
@@ -7,10 +8,13 @@ import {Component, OnInit} from '@angular/core';
 })
 export class PortalComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.router.navigate(['/signup']);
+  }, 2000);  //5s
   }
 
 }

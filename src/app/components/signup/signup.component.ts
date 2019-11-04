@@ -5,7 +5,7 @@ import {SignupService} from '../../services/signup.service';
 
 import {Cart} from '../../models/cart';
 import {Customer} from '../../models/customer';
-import {CreditCardPayment} from '../../models/payment';
+import {Payment, PaymentKind} from '../../models/payment';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
 
   cart: Cart = {planVariantId: null};
   customer: Customer = {firstName: null, lastName: null};
-  payment: CreditCardPayment = {bearer: 'CreditCard:Adyen', cardNumber: '', cardHolder: '', expiryMonth: '', expiryYear: '', cvc: ''};
+  payment: Payment = {bearer: null, cardNumber: null, cardHolder: null, expiryMonth: null, expiryYear: null, cvc: null, accountHolder: null, bic: null, iban: null};
 
   constructor(private router: Router,
               private signupService: SignupService) {
@@ -48,8 +48,11 @@ export class SignupComponent implements OnInit {
 
     this.signupService.subscribe(this.cart, this.customer, this.payment)
       .subscribe(
-        () => this.router.navigate(['/portal']).then(() => alert(`You was subscribed successful!`)),
-        error => alert(`Error! Interactive signup failed. [${error}]`)
+        () => this.router.navigate(['/portal']).then(() => alert(`Your subscription was successful!`)),
+        error => {
+          alert(`Error! Interactive signup failed. [${error.errorMessage}]`);
+          this.router.navigate(['/signup']);
+        }
       );
 
     this.router.navigate(['/loader']).then(() => console.log('loader'));
@@ -64,10 +67,15 @@ export class SignupComponent implements OnInit {
   }
 
   private isValidPayment(): boolean {
-    return !!this.payment.cardNumber &&
-      !!this.payment.cardHolder &&
-      !!this.payment.expiryMonth &&
-      !!this.payment.expiryYear &&
-      !!this.payment.cvc;
+    if(this.payment.bearer == PaymentKind.CreditCard)
+      return !!this.payment.cardNumber &&
+        !!this.payment.cardHolder &&
+        !!this.payment.expiryMonth &&
+        !!this.payment.expiryYear &&
+        !!this.payment.cvc;
+    else if(this.payment.bearer == PaymentKind.Debit)
+      return !!this.payment.accountHolder &&
+        !!this.payment.iban
+        //BIC is not neccessary
   }
 }

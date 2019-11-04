@@ -1,8 +1,8 @@
 export interface Payment {
   bearer: string;
-}
-
-export interface CreditCardPayment extends Payment {
+  accountHolder: string;
+  iban: string;
+  bic: string;
   cardNumber: string;
   cardHolder: string;
   expiryMonth: string;
@@ -11,19 +11,10 @@ export interface CreditCardPayment extends Payment {
 }
 
 export enum PaymentProvider {
-  FakePSP = 'FakePSP',
-  InvoicePayment = 'InvoicePayment',
-  Adyen = 'Adyen'
+  FakePSP = 'FakePSP'
 }
 
 export enum PaymentKind {
-  BlackLabel = 'BlackLabel',
-  DirectDebit = 'DirectDebit',
-  CreditCard = 'CreditCard'
+  Debit = 'Debit:FakePSP',
+  CreditCard = 'CreditCard:FakePSP'
 }
-
-export let PaymentProviderMapping: { provider: PaymentProvider, kinds: PaymentKind[] }[] = [
-  {provider: PaymentProvider.FakePSP, kinds: [PaymentKind.DirectDebit]},
-  {provider: PaymentProvider.InvoicePayment, kinds: [PaymentKind.BlackLabel]},
-  {provider: PaymentProvider.Adyen, kinds: [PaymentKind.CreditCard]}
-];
