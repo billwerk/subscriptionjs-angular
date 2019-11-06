@@ -5,16 +5,20 @@ This project is an example of a basic Signup application in Angular
  and [REST API](https://developer.billwerk.io/Docs/ApiReference)
  through [billwerk node wrapper](https://www.npmjs.com/package/billwerk)
 
-## <font color="red">IMPORTANT!</font> Before you launch the application
-- Clone repo `git clone git@github.com:billwerk/subscriptionjs-angular.git` 
-- Run `npm install`
+## **IMPORTANT!** Before you launch the application
 
-## Launch application with Sandbox server
+- Clone repo `git clone git@github.com:billwerk/subscriptionjs-angular.git`
+- Run `npm install` in the cloned repo to install all dependencies
 - Login to your account on [Sandbox](https://sandbox.billwerk.com) server
 - Make sure that your account has any active planvariants ([Products](https://sandbox.billwerk.com/#/products))
+  - Allow signup via selfservice in the planvariant itself
+  - If you see "undefined" in the planvariant selection dropdown, please fill the description of the planvariant in the billwerk UI
 - Make sure that your account has set both whitelabel FakeProvider payment methods ([Settings/Payment Settings](https://sandbox.billwerk.com/#/settings/payment-providers-list))
 - Populate your settings in `src\environment\sandbox\environment.ts`:
   - `publicApiKey` - please visit [Settings/Self-Service](https://sandbox.billwerk.com/#/settings/self-service) and copy your `Public API Key` on `General` tab
   - `clientId` and `clientSecret` - please visit [Settings/My Apps](https://sandbox.billwerk.com/#/settings/oauth-clients), create a new `Confidential` client and copy `Id` and `Secret`
-- Run `npm run sandbox` or `ng serve --c=sandbox` for a sandbox server
-- Navigate to http://localhost:4200/
+
+## Launch application with Sandbox server
+
+- Run `npm run sandbox` or `ng serve --c=sandbox` in the cloned repo for a sandbox server
+- Navigate to http://localhost:4200/ in your browser
