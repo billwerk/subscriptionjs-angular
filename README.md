@@ -12,7 +12,7 @@ This project is an example of a basic Signup application in Angular
 ## Launch application with Sandbox server
 - Login to your account on [Sandbox](https://sandbox.billwerk.com) server
 - Make sure that your account has any active planvariants ([Products](https://sandbox.billwerk.com/#/products))
-- Make sure that your account has set both FakePSP payment methods ([Settings/Payment Settings](https://sandbox.billwerk.com/#/settings/payment-providers-list))
+- Make sure that your account has set both whitelabel FakeProvider payment methods ([Settings/Payment Settings](https://sandbox.billwerk.com/#/settings/payment-providers-list))
 - Populate your settings in `src\environment\sandbox\environment.ts`:
   - `publicApiKey` - please visit [Settings/Self-Service](https://sandbox.billwerk.com/#/settings/self-service) and copy your `Public API Key` on `General` tab
   - `clientId` and `clientSecret` - please visit [Settings/My Apps](https://sandbox.billwerk.com/#/settings/oauth-clients), create a new `Confidential` client and copy `Id` and `Secret`
